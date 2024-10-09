@@ -1,8 +1,10 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main() {
+    int numbers[20];    
     int k;                
+
     cout << "Введите количество чисел (не более 20): ";
     cin >> k;
 
@@ -19,6 +21,7 @@ int main() {
             maxi = i;            
         }
     }
+
 
     cout << "Наибольшее число: " << maxn << endl;
     cout << "Индекс наибольшего числа в массиве: " << maxi << endl;
