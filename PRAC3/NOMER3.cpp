@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    char bukva = 'L';
+    char bukva = 'Л';
 
     string stroka;
     cout << "Введите строку: ";
