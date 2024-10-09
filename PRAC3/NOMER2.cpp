@@ -2,8 +2,7 @@
 using namespace std;
 
 int main() {
-    const int msize = 20; 
-    int matrix[msize][msize]; 
+    int matrix[20][20]; 
     int stolb, strok;                 
 
     cout << "Введите количество строк (не более 20): ";
@@ -18,7 +17,7 @@ int main() {
         }
     }
 
-    int strmin[msize]; 
+    int strmin[20]; 
     for (int i = 0; i < stolb; i++) {
         int minin = matrix[i][0]; 
         for (int j = 1; j < strok; j++) {
