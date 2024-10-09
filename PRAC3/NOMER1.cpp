@@ -2,10 +2,7 @@
 using namespace std;
 
 int main() {
-    const int msize = 20; 
-    int numbers[msize];    
     int k;                
-
     cout << "Введите количество чисел (не более 20): ";
     cin >> k;
 
@@ -22,7 +19,6 @@ int main() {
             maxi = i;            
         }
     }
-
 
     cout << "Наибольшее число: " << maxn << endl;
     cout << "Индекс наибольшего числа в массиве: " << maxi << endl;
