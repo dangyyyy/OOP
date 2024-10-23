@@ -32,18 +32,12 @@ int main() {
     cout << "\nВведите количество элементов массива (не более 20): ";
     cin >> n;
 
-    if (n > 0 and n <= 20) {
-        cout << "Введите элементы массива: " << endl;
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
-        }
-
-        int maxInArray = findMax(arr, n);
-        cout << "Максимальный элемент массива: " << maxInArray << endl;
-    }
-    else {
-        cout << "Некорректное количество элементов!" << endl;
+    cout << "Введите элементы массива: " << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
     }
 
-    return 0;
+    int maxInArray = findMax(arr, n);
+    cout << "Максимальный элемент массива: " << maxInArray << endl;
+
 }
