@@ -11,7 +11,7 @@ int main() {
     vector<string> strings;
     for (int i = 0; i < n; i++) {
         string str;
-        cout << "Введите строку: ";
+        cout << "Введите " << i+1 << " строку: ";
         getline(cin, str);
         strings.push_back(str);
         for (int j = strings.size() - 1; j > 0; j--) {
