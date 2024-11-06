@@ -8,23 +8,24 @@ int main() {
     cout << "Введите количество строк: ";
     cin >> n;
     cin.ignore();
-    vector<string> strings(n);
+    vector<string> strings;
     for (int i = 0; i < n; i++) {
+        string str;
         cout << "Введите строку: ";
-        getline(cin, strings[i]);
-    }
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (strings[j] > strings[j + 1]) {
-                swap(strings[j], strings[j + 1]);
+        getline(cin, str);
+        strings.push_back(str);
+        for (int j = strings.size() - 1; j > 0; j--) {
+            if (strings[j] < strings[j - 1]) {
+                string temp = strings[j];
+                strings[j] = strings[j - 1];
+                strings[j - 1] = temp;
+            }
+            else {
+                break;
             }
         }
     }
-
-    cout << "Отсортированные строки:" << endl;
-    for (const string& s : strings) {
-        cout << s << endl;
+    for (int i = 0; i < n; i++) {
+        cout << strings[i] << endl;
     }
-
-    return 0;
 }
