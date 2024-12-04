@@ -6,8 +6,8 @@ using namespace std;
 // Базовый класс Store
 class Store {
 private:
-    string address;      
-    string workingHours; 
+    string address;
+    string workingHours;
 
 protected:
     string name;
@@ -23,7 +23,8 @@ public:
     void setAddress(const string& newAddress) {
         if (newAddress.empty()) {
             address = "Без адреса";
-        } else {
+        }
+        else {
             address = newAddress;
         }
     }
@@ -35,7 +36,8 @@ public:
     void setWorkingHours(const string& newHours) {
         if (newHours.empty()) {
             workingHours = "Не указан";
-        } else {
+        }
+        else {
             workingHours = newHours;
         }
     }
@@ -49,6 +51,22 @@ public:
         cout << "Магазин: " << name << endl;
         cout << "Адрес: " << address << endl;
         cout << "График работы: " << workingHours << endl;
+    }
+};
+
+// класс GroceryStore
+class GroceryStore : public Store {
+protected:
+    int numberOfSections;
+
+public:
+    GroceryStore(const string& storeName, const string& storeAddress, const string& storeHours, int sections)
+        : Store(storeName, storeAddress, storeHours), numberOfSections(sections) {}
+
+    void printInfo() const override {
+        Store::printInfo();
+        cout << "Количество отделов: " << numberOfSections << endl;
+        
     }
 };
 
@@ -76,29 +94,30 @@ public:
     }
 };
 
-// Класс LogisticsStore, основанный на двух других
-class LogisticsStore : public Store, public Warehouse {
+// Класс LogisticsStore, основанный на GroceryStore и Warehouse
+class LogisticsStore : public GroceryStore, public Warehouse {
 public:
-    LogisticsStore(const string& storeName, const string& storeAddress, const string& storeHours, int cap)
-        : Store(storeName, storeAddress, storeHours), Warehouse(cap) {}
+    LogisticsStore(const string& storeName, const string& storeAddress, const string& storeHours, int sections, int cap)
+        : GroceryStore(storeName, storeAddress, storeHours, sections), Warehouse(cap) {}
 
-    // Вывод информации
+
     void printInfo() const override {
-        Store::printInfo();
+        GroceryStore::printInfo();
         printWarehouseInfo();
+        
     }
 };
 
 // Класс RegionalStore, наследующий LogisticsStore
-class RegionalStore : public LogisticsStore {
+class RegionalStore : private LogisticsStore {
 public:
-    // Конструктор
-    RegionalStore(const string& storeAddress, const string& storeHours, int capacity)
-        : LogisticsStore("Региональный магазин", storeAddress, storeHours, capacity) {}
+    RegionalStore(const string& storeAddress, const string& storeHours, int sections, int capacity)
+        : LogisticsStore("Региональный магазин", storeAddress, storeHours, sections, capacity) {}
 
     // Метод изменения имени магазина
     void changeName(const string& newName) {
         name = newName;
+        
     }
 
     // Вывод информации о региональном магазине
@@ -106,28 +125,25 @@ public:
         cout << "\nИнформация о региональном магазине:" << endl;
         cout << "Имя магазина: " << name << endl;
         // cout << "Имя магазина: " << address << endl;
+        
     }
 };
 
 int main() {
-    // Магазин с базовыми параметрами
     Store store("Продуктовый рай", "ул. Мира, 5", "8:00 - 22:00");
     store.printInfo();
     cout << endl;
 
-    // Логистический магазин
-    LogisticsStore logistics("Склад-магазин", "ул. Заводская, 7", "9:00 - 18:00", 500);
+    LogisticsStore logistics("Склад-магазин", "ул. Заводская, 7", "9:00 - 18:00", 5, 500);
     logistics.printInfo();
     cout << endl;
 
-    // Региональный магазин
-    RegionalStore regional("ул. Центральная, 3", "9:00 - 20:00", 300);
+    RegionalStore regional("ул. Центральная, 3", "9:00 - 20:00", 3, 300);
     regional.printRegionalInfo();
 
-    // Изменение имени через функцию
     regional.changeName("Магазин Сибирь");
     regional.printRegionalInfo();
-    // cout << regional.name << endl;
+    //cout << regional.name << endl;
 
     cout << endl;
 
