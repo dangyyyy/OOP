@@ -4,7 +4,6 @@
 #include "Store.h"
 #include "Warehouse.h"
 
-// Класс LogisticsStore (логистический магазин)
 class LogisticsStore : public Store, public Warehouse {
 public:
     LogisticsStore(const string& storeName, const string& storeAddress, const string& storeHours, int capacity)
