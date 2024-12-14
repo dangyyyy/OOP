@@ -5,10 +5,10 @@
 #include <iostream>
 using namespace std;
 
-// Класс Warehouse (склад)
+
 class Warehouse : public BaseStore {
 private:
-    int capacity; // Вместимость склада
+    int capacity; 
 
 public:
     Warehouse(int cap = 0) : capacity(cap > 0 ? cap : 0) {}
@@ -28,7 +28,7 @@ public:
     // Перегрузка оператора ==: сравнивает вместимость
     bool operator==(const Warehouse& other) const { return capacity == other.capacity; }
 
-    // Перегрузка оператора !=: обратное сравнение
+    // Перегрузка оператора !=
     bool operator!=(const Warehouse& other) const { return !(*this == other); }
 };
 
