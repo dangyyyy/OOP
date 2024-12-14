@@ -6,10 +6,9 @@
 #include <string>
 using namespace std;
 
-// Класс Store (базовый магазин)
 class Store : public BaseStore {
 protected:
-    string name, address, workingHours; // Имя, адрес и график работы
+    string name, address, workingHours; 
 
 public:
     Store(const string& storeName = "Без названия", const string& storeAddress = "Без адреса", const string& storeHours = "Не указан")
@@ -21,7 +20,6 @@ string getAddress() const { return address; }
     void setWorkingHours(const string& newHours) { workingHours = newHours.empty() ? "Не указан" : newHours; }
 string getWorkingHours() const { return workingHours; }
 
-    // Уникальная реализация printDetails
     void printDetails() const override {
         cout << "=== Информация о магазине ===\n";
 cout << "Тип: " << getType() << "\n";
