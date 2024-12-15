@@ -1,5 +1,4 @@
-﻿#ifndef STORE_H
-#define STORE_H
+#pragma once
 
 #include "BaseStore.h"
 #include <iostream>
@@ -40,4 +39,3 @@ Store & operator ++() { workingHours += " (расширенные часы)"; re
 Store operator ++(int) { Store temp = *this; ++(*this); return temp; }        // Постфикс
 };
 
-#endif
