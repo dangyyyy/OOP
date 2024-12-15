@@ -1,5 +1,4 @@
-#ifndef WAREHOUSE_H
-#define WAREHOUSE_H
+#pragma once
 
 #include "BaseStore.h"
 #include <iostream>
@@ -32,4 +31,3 @@ public:
     bool operator!=(const Warehouse& other) const { return !(*this == other); }
 };
 
-#endif
