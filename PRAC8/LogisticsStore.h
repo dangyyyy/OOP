@@ -1,5 +1,4 @@
-#ifndef LOGISTICSSTORE_H
-#define LOGISTICSSTORE_H
+#pragma once
 
 #include "Store.h"
 #include "Warehouse.h"
@@ -25,4 +24,3 @@ public:
     }
 };
 
-#endif
